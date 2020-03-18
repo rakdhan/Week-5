@@ -1,8 +1,6 @@
 function attack (damage) {
   // Code disini
-  var temp = damage - 2
-   
-  return temp
+  return damage - 2
 }
 
 function damageCalculation (numberOfAttacks, damagePerAttack) {
@@ -10,8 +8,7 @@ function damageCalculation (numberOfAttacks, damagePerAttack) {
   if (damagePerAttack === String(damagePerAttack)) {
     return 'functions will only accept input of number(s)'
   } 
-  var result = numberOfAttacks * attack(damagePerAttack)
-  return result
+  return numberOfAttacks * attack(damagePerAttack)
 }
 
 // TEST CASE
