@@ -34,19 +34,29 @@ function meleeRangedGrouping (str) {
   var Ranged = []
   var Melee = []
   var result = []
+  let unknownType = []
   for (let k = 0; k < finalSplit.length; k++) {
     if (finalSplit[k][1] === 'Ranged') {
       Ranged.push(finalSplit[k][0])
     }
-    else{
+    else if (finalSplit[k][1] === 'Melee') {
       Melee.push(finalSplit[k][0])
     }
+    else{
+      unknownType.push(finalSplit[k][0])
+    }
+}
+  result.push(Ranged, Melee, unknownType)
+  if (unknownType.length === 0) {
+    result.pop(unknownType)
   }
-  result.push(Ranged, Melee)
 
   //penuhi kondisi
-  if (str === '' || str === undefined) {
+  if (str === '' || str === undefined || str.length === 0) {
     return []
+  }
+  else if (str === Number(str)) {
+    return 'Function will only accept input of string'
   }
   return result
 }
@@ -59,4 +69,4 @@ console.log(meleeRangedGrouping('Razor-Ranged,Invoker-Ranged,Meepo-Melee,Axe-Mel
 console.log(meleeRangedGrouping('Drow Ranger-Ranged,Chen-Ranged,Dazzle-Ranged,Io-Ranged'));
 // [ ['Drow Ranger', 'Chen', 'Dazzle', 'Io'], [] ]
 
-console.log(meleeRangedGrouping('')); // []
+console.log(meleeRangedGrouping([])); // []
